@@ -1,0 +1,32 @@
+-- Table definitions for the tournament project.
+--
+-- Put your SQL 'create table' statements in this file; also 'create view'
+-- statements if you choose to use it.
+--
+-- You can write comments in this file by starting them with two dashes, like
+-- these lines here.
+DROP database if exists tournament;
+CREATE DATABASE tournament; 
+\c tournament
+
+--the tournaments table is a simple
+CREATE TABLE tournaments(
+       id SERIAL,
+       name TEXT,
+       created TIMESTAMP DEFAULT current_timestamp
+       );
+
+--multiple instances of a player have to be created if they are in multiple tournaments
+CREATE TABLE players (
+       id SERIAL,
+       name TEXT, 
+       t_id INT
+       ); 
+--
+CREATE TABLE  matches (
+       winner_id INT, 
+       loser_id INT, 
+       t_id INT
+       );
+
+
